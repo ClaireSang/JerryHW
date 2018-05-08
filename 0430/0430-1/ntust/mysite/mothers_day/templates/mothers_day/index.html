@@ -1,0 +1,38 @@
+<title>母親節留言板</title>
+
+
+		<h1>留言</h1>
+		<form action="/mothers_day/save/" method="POST" novalidate="novalidate">
+		{% csrf_token %}
+			<table class="table table-striped table-bordered table-hover table-condensed">
+                      <label>用戶名:</label><br /><input type="text" name="username" placeholder="用户名" /> <br /><br />
+                      <label>標  題:</label><br /><input type="text" name="title" placeholder="標題" /><br /><br />
+                      <label>内  容:</label><br /><textarea name="content" placeholder="内容" style="resize: none;"> </textarea><br /><br />
+                  </table>
+                  <input class="btn btn-success" type="submit" value="留言"/>
+              </form>
+{% for m in mg %}
+
+<table class="table">
+		<tr>
+				<th>UserName</th>
+					<td>{{ m.username}}</td>
+		</tr>
+
+		<tr>
+				<th>Title</th>
+					<td>{{ m.title}}</td>
+		</tr>
+
+		<tr>
+				<th>Content</th>
+					<td>{{ m.content}}</td>
+		</tr>
+
+		<tr>
+				<th>Publish</th>
+					<td>{{ m.publish}}</td>
+		</tr>
+		{% endfor %}
+
+
